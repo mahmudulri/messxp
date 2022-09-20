@@ -33,72 +33,72 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Form(
             key: controller.resgistrationFromKey,
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            child: controller.isLoading == true
-                ? Center(
-                    child: CircularProgressIndicator(
-                      color: AppColors.scaffoldColor,
-                    ),
-                  )
-                : Column(
-                    children: [
-                      SizedBox(
-                        height: screenHeight * 0.070,
-                      ),
-                      logoSection(),
-                      appNameSection(),
-                      SizedBox(
-                        height: screenHeight * 0.060,
-                      ),
-                      reg_texfield(
-                          "Your name", controller.nameController, controller),
-                      SizedBox(
-                        height: screenHeight * 0.010,
-                      ),
-                      reg_texfield(
-                          "Email", controller.emailController, controller),
-                      SizedBox(
-                        height: screenHeight * 0.010,
-                      ),
-                      reg_texfield("Phone number",
-                          controller.phoneNumberController, controller),
-                      SizedBox(
-                        height: screenHeight * 0.010,
-                      ),
-                      reg_texfield("Password", controller.passwordController,
-                          controller),
-                      SizedBox(
-                        height: screenHeight * 0.010,
-                      ),
-                      reg_texfield("Confirm Password",
-                          controller.confirmPassController, controller),
-                      SizedBox(
-                        height: screenHeight * 0.030,
-                      ),
-                      register_button(),
-                      SizedBox(
-                        height: screenHeight * 0.010,
-                      ),
-                      RichText(
-                        text: TextSpan(children: [
-                          TextSpan(
-                            text: 'Already have account? ',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                          TextSpan(
-                              text: 'Login now',
-                              style: TextStyle(
-                                color: Colors.yellow,
-                              ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  Navigator.pop(context);
-                                }),
-                        ]),
-                      ),
-                    ],
+            child: Column(
+              children: [
+                SizedBox(
+                  height: screenHeight * 0.070,
+                ),
+                logoSection(),
+                appNameSection(),
+                SizedBox(
+                  height: screenHeight * 0.060,
+                ),
+                reg_texfield(
+                    "Your name", controller.nameController, controller),
+                SizedBox(
+                  height: screenHeight * 0.010,
+                ),
+                reg_texfield(
+                    "Email", controller.emailController, controller),
+                SizedBox(
+                  height: screenHeight * 0.010,
+                ),
+                reg_texfield("Phone number",
+                    controller.phoneNumberController, controller),
+                SizedBox(
+                  height: screenHeight * 0.010,
+                ),
+                reg_texfield("Password", controller.passwordController,
+                    controller),
+                SizedBox(
+                  height: screenHeight * 0.010,
+                ),
+                reg_texfield("Confirm Password",
+                    controller.confirmPassController, controller),
+                SizedBox(
+                  height: screenHeight * 0.030,
+                ),
+                Obx(() => controller.isLoading.value == true ?
+                Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.blueGrey,
                   ),
+                ) : Container()),
+                register_button(),
+                SizedBox(
+                  height: screenHeight * 0.010,
+                ),
+                RichText(
+                  text: TextSpan(children: [
+                    TextSpan(
+                      text: 'Already have account? ',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    TextSpan(
+                        text: 'Login now',
+                        style: TextStyle(
+                          color: Colors.yellow,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.pop(context);
+                          }),
+                  ]),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -52,13 +52,6 @@ class OtpScreen extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                controller.isLoading == true
-                    ? Center(
-                        child: CircularProgressIndicator(
-                          color: AppColors.scaffoldColor,
-                        ),
-                      )
-                    : Container(),
                 Image.asset(
                   "assets/images/otp_image.png",
                   height: 200,
@@ -124,6 +117,12 @@ class OtpScreen extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
+                Obx(() => controller.isLoading.value == true ?
+                Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.blueGrey,
+                  ),
+                ) : Container()),
                 verify_button(),
               ],
             ),

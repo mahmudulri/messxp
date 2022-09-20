@@ -37,29 +37,8 @@ class Login_resetpass extends StatelessWidget {
                   SizedBox(
                     height: screenheight * 0.060,
                   ),
-                  // controller.isLoading == true
-                  //     ? Center(
-                  //         child: CircularProgressIndicator(
-                  //           color: AppColors.scaffoldColor,
-                  //         ),
-                  //       )
-                  //     : Container(),
                   SizedBox(
                     height: screenheight * 0.010,
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: GestureDetector(
-                      onTap: () {
-                        // controller.refresh();
-                        // Get.to(() => PasswordReset());
-                        print("new forgot button");
-                      },
-                      child: DText(
-                        text: "Forget password",
-                        color: AppColors.defalutColor,
-                      ),
-                    ),
                   ),
                   // user_selection_box(),
                   SizedBox(
@@ -76,29 +55,16 @@ class Login_resetpass extends StatelessWidget {
                     height: screenheight * 0.050,
                   ),
 
+                  Obx(() => controller.isLoading.value == true ?
+                  Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.blueGrey,
+                    ),
+                  ) : Container()),
+
                   login_reset_button("Login"),
                   SizedBox(
                     height: 10,
-                  ),
-
-                  RichText(
-                    text: TextSpan(children: [
-                      TextSpan(
-                        text: 'Dont have any account? ',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      TextSpan(
-                          text: 'Open now',
-                          style: TextStyle(
-                            color: Colors.yellow,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              print("new log in screen");
-                            }),
-                    ]),
                   ),
                 ],
               ),

@@ -46,18 +46,6 @@ class _LogIn_ScreenState extends State<LogIn_Screen> {
                   SizedBox(
                     height: screenheight * 0.060,
                   ),
-                  controller.isLoading == true
-                      ? Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.scaffoldColor,
-                          ),
-                        )
-                      : Container(),
-                  // reg_texfield("Phone number or code"),
-                  // SizedBox(
-                  //   height: 10,
-                  // ),
-                  // reg_texfield("Password"),
                   SizedBox(
                     height: screenheight * 0.010,
                   ),
@@ -65,7 +53,6 @@ class _LogIn_ScreenState extends State<LogIn_Screen> {
                     alignment: Alignment.centerRight,
                     child: GestureDetector(
                       onTap: () {
-                        controller.refresh();
                         Get.to(() => PasswordReset());
                       },
                       child: DText(
@@ -87,6 +74,13 @@ class _LogIn_ScreenState extends State<LogIn_Screen> {
                   SizedBox(
                     height: screenheight * 0.050,
                   ),
+
+                  Obx(() => controller.isLoading.value == true ?
+                  Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.blueGrey,
+                    ),
+                  ) : Container()),
 
                   login_button("Log in"),
                   SizedBox(

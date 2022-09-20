@@ -97,13 +97,12 @@ class SetNewPassword extends StatelessWidget {
                     ],
                   ),
                 ),
-                controller.isLoading == true
-                    ? Center(
-                        child: CircularProgressIndicator(
-                          color: AppColors.scaffoldColor,
-                        ),
-                      )
-                    : Container(),
+                Obx(() => controller.isLoading.value == true ?
+                Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.blueGrey,
+                  ),
+                ) : Container()),
                 SizedBox(
                   height: 20,
                 ),

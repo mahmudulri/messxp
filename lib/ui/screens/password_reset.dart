@@ -61,13 +61,6 @@ class PasswordReset extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                controller.isLoading == true
-                    ? Center(
-                        child: CircularProgressIndicator(
-                          color: AppColors.scaffoldColor,
-                        ),
-                      )
-                    : Container(),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -111,6 +104,15 @@ class PasswordReset extends StatelessWidget {
                   height: 20,
                 ),
                 send_otp_button(context),
+                SizedBox(
+                  height: 10,
+                ),
+                Obx(() => controller.isLoading.value == true ?
+                Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.blueGrey,
+                  ),
+                ) : Container()),
               ],
             ),
           ),
