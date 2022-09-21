@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:messxp/provider/otp_provider.dart';
@@ -23,16 +24,21 @@ class OtpController extends GetxController {
     var otpVerificationStatus =
         await OtpProvider().verifyOtp(digit1, digit2, digit3, digit4, digit5);
     print("login status ......." + otpVerificationStatus.toString());
-    isLoading.value = false;
+
     if (otpVerificationStatus == true) {
+      isLoading.value = false;
       // Get.offAndToNamed(Routes.HOME);
       Get.to(() => LogIn_Screen());
     } else {
-      // Fluttertoast.showToast(msg:"ENTER VALID INFORMATION",
-      //     toastLength: Toast.LENGTH_SHORT,
-      //     gravity: ToastGravity.BOTTOM,
-      //     backgroundColor: greyText);
-      // print("error...........");
+      isLoading.value = false;
+      Get.snackbar(
+        "Status",
+        "Error !!! Provide correct otp ...",
+        colorText: Colors.black,
+        backgroundColor: Colors.grey,
+        snackPosition: SnackPosition.BOTTOM,
+
+      );
     }
   }
 
@@ -44,16 +50,20 @@ class OtpController extends GetxController {
     var otpVerificationStatus = await OtpProvider()
         .verifyOtpforPassword(digit1, digit2, digit3, digit4, digit5);
     print("login status ......." + otpVerificationStatus.toString());
-    isLoading.value = false;
     if (otpVerificationStatus == true) {
+      isLoading.value = false;
       // Get.offAndToNamed(Routes.HOME);
       Get.to(() => SetNewPassword());
     } else {
-      // Fluttertoast.showToast(msg:"ENTER VALID INFORMATION",
-      //     toastLength: Toast.LENGTH_SHORT,
-      //     gravity: ToastGravity.BOTTOM,
-      //     backgroundColor: greyText);
-      // print("error...........");
+      isLoading.value = false;
+      Get.snackbar(
+        "Status",
+        "Error !!! Provide correct otp ...",
+        colorText: Colors.black,
+        backgroundColor: Colors.grey,
+        snackPosition: SnackPosition.BOTTOM,
+
+      );
     }
   }
 }

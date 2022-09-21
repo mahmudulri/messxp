@@ -22,7 +22,7 @@ Widget send_otp_button(BuildContext context) {
           onPrimary: Colors.white, // foreground
         ),
         onPressed: () {
-          controller.sendMailForPassewordOtp();
+          controller.sendMailForPasswordOtp();
         },
         child: Text(
           'Send',

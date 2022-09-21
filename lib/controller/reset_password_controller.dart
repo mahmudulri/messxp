@@ -5,7 +5,7 @@ import 'package:messxp/ui/screens/otp_for_pass.dart';
 import 'package:messxp/ui/screens/set_new_password.dart';
 
 class ResetPasswordController extends GetxController {
-  GlobalKey<FormState> resetPasswodFromKey = GlobalKey<FormState>();
+  GlobalKey<FormState> resetPasswordFromKey = GlobalKey<FormState>();
 
   var isLoading = false.obs;
 
@@ -35,12 +35,12 @@ class ResetPasswordController extends GetxController {
     return null;
   }
 
-  Future<void> sendMailForPassewordOtp() async {
-    final isValid = resetPasswodFromKey.currentState!.validate();
+  Future<void> sendMailForPasswordOtp() async {
+    final isValid = resetPasswordFromKey.currentState!.validate();
     if (!isValid) {
       return;
     } else {
-      resetPasswodFromKey.currentState!.save();
+      resetPasswordFromKey.currentState!.save();
     }
 
     isLoading.value = true;
@@ -54,11 +54,15 @@ class ResetPasswordController extends GetxController {
       isLoading.value = false;
       Get.to(() => OtpForPassword());
     } else {
-      // Fluttertoast.showToast(msg:"ENTER VALID INFORMATION",
-      //     toastLength: Toast.LENGTH_SHORT,
-      //     gravity: ToastGravity.BOTTOM,
-      //     backgroundColor: greyText);
-      print("error...........");
+      isLoading.value = false;
+      Get.snackbar(
+        "Status",
+        "Something wrong !! Could not sent otp ...",
+        colorText: Colors.black,
+        backgroundColor: Colors.grey,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+
     }
   }
 }

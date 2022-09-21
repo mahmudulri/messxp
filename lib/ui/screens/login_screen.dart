@@ -25,6 +25,9 @@ class _LogIn_ScreenState extends State<LogIn_Screen> {
   @override
   Widget build(BuildContext context) {
     var screenheight = MediaQuery.of(context).size.height;
+
+    bool valuefirst = false;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.scaffoldColor,
@@ -75,13 +78,6 @@ class _LogIn_ScreenState extends State<LogIn_Screen> {
                     height: screenheight * 0.050,
                   ),
 
-                  Obx(() => controller.isLoading.value == true ?
-                  Center(
-                    child: CircularProgressIndicator(
-                      color: Colors.blueGrey,
-                    ),
-                  ) : Container()),
-
                   login_button("Log in"),
                   SizedBox(
                     height: 10,
@@ -106,6 +102,13 @@ class _LogIn_ScreenState extends State<LogIn_Screen> {
                             }),
                     ]),
                   ),
+                  SizedBox(height: 20.0,),
+                  Obx(() => controller.isLoading.value == true ?
+                  Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.blueGrey,
+                    ),
+                  ) : Container()),
                 ],
               ),
             ),

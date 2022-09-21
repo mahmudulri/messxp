@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:messxp/provider/registration_provider.dart';
@@ -89,19 +90,24 @@ class RegistrationController extends GetxController {
 
     isLoading.value = true;
 
-    var logInStatus = await RegistrationProvider()
+    var status = await RegistrationProvider()
         .doRegistration(name, email, phone, password, confirmPassword);
-    print("login status ......." + logInStatus.toString());
-    isLoading.value = false;
-    if (logInStatus == true) {
+    print("login status ......." + status.toString());
+
+    if (status == true) {
+      isLoading.value = false;
       // Get.offAndToNamed(Routes.HOME);
       Get.to(() => OtpScreen());
     } else {
-      // Fluttertoast.showToast(msg:"ENTER VALID INFORMATION",
-      //     toastLength: Toast.LENGTH_SHORT,
-      //     gravity: ToastGravity.BOTTOM,
-      //     backgroundColor: greyText);
-      // print("error...........");
+      isLoading.value = false;
+      Get.snackbar(
+        "Status",
+        "Could not Registered the User",
+        colorText: Colors.black,
+        backgroundColor: Colors.grey,
+        snackPosition: SnackPosition.BOTTOM,
+
+      );
     }
   }
 }

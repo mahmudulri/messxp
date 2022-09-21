@@ -89,7 +89,7 @@ class PasswordReset extends StatelessWidget {
                   height: 50,
                 ),
                 Form(
-                    key: controller.resetPasswodFromKey,
+                    key: controller.resetPasswordFromKey,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     child: TextFormField(
                         controller: controller.phoneNumberController,

@@ -56,16 +56,21 @@ class LoginController extends GetxController {
 
     var logInStatus = await LoginProvider().verifyUserLogin(email, password);
     print("login status ......." + logInStatus.toString());
-    isLoading.value = false;
+
     if (logInStatus == true) {
+      isLoading.value = false;
       // Get.offAndToNamed(Routes.HOME);
       Get.to(() => Homepage());
     } else {
-      // Fluttertoast.showToast(msg:"ENTER VALID INFORMATION",
-      //     toastLength: Toast.LENGTH_SHORT,
-      //     gravity: ToastGravity.BOTTOM,
-      //     backgroundColor: greyText);
-      print("error...........");
+      isLoading.value = false;
+      Get.snackbar(
+        "Status",
+        "Could not log in",
+        colorText: Colors.black,
+        backgroundColor: Colors.grey,
+        snackPosition: SnackPosition.BOTTOM,
+
+      );
     }
   }
 }

@@ -68,12 +68,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(
                   height: screenHeight * 0.030,
                 ),
-                Obx(() => controller.isLoading.value == true ?
-                Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.blueGrey,
-                  ),
-                ) : Container()),
                 register_button(),
                 SizedBox(
                   height: screenHeight * 0.010,
@@ -97,6 +91,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           }),
                   ]),
                 ),
+
+                SizedBox(height: 20.0,),
+
+                Obx(() => controller.isLoading.value == true ?
+                Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.blueGrey,
+                  ),
+                ) : Container()),
               ],
             ),
           ),

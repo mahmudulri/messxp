@@ -56,23 +56,29 @@ class SetNewPasswordController extends GetxController {
 
     isLoading.value = true;
 
-    var logInStatus =
+    var status =
         await SetNewPassProvider().setNewPassword(password, confirmPassword);
-    print("login status ......." + logInStatus.toString());
+    print("login status ......." + status.toString());
     isLoading.value = false;
-    if (logInStatus == true) {
-      // Fluttertoast.showToast(
-      //     msg: "PASSWORD UPDATED",
-      //     toastLength: Toast.LENGTH_SHORT,
-      //     gravity: ToastGravity.BOTTOM,
-      //     backgroundColor: Colors.grey);
+    if (status == true) {
+      isLoading.value = false;
+      Get.snackbar(
+        "Status",
+        "New Password Updated ...",
+        colorText: Colors.black,
+        backgroundColor: Colors.grey,
+        snackPosition: SnackPosition.BOTTOM,
+      );
       Get.to(() => Login_resetpass());
     } else {
-      // Fluttertoast.showToast(msg:"ENTER VALID INFORMATION",
-      //     toastLength: Toast.LENGTH_SHORT,
-      //     gravity: ToastGravity.BOTTOM,
-      //     backgroundColor: greyText);
-      // print("error...........");
+      isLoading.value = false;
+      Get.snackbar(
+        "Status",
+        "Could not Update Password ...",
+        colorText: Colors.black,
+        backgroundColor: Colors.grey,
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 }
