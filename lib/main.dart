@@ -31,6 +31,6 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         getPages: getPages,
-        home: LogIn_Screen());
+        home: SignUpScreen());
   }
 }
