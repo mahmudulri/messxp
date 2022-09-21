@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:messxp/const/app_colors.dart';
+import 'package:messxp/ui/screens/create_mess_screen.dart';
 
 Widget create_newmess_button(String butonName) {
   return Padding(
@@ -16,7 +18,9 @@ Widget create_newmess_button(String butonName) {
           primary: AppColors.defalutColor, // background
           onPrimary: Colors.white, // foreground
         ),
-        onPressed: () {},
+        onPressed: () {
+          Get.to(Create_Mess());
+        },
         child: Text(
           butonName,
           style: TextStyle(
