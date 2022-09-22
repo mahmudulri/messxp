@@ -5,8 +5,9 @@ import 'package:messxp/ui/screens/create_mess_screen.dart';
 
 Widget create_newmess_button(String butonName) {
   return Padding(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 75,
+    padding: EdgeInsets.only(
+      left: 35,
+      right: 35
     ),
     child: SizedBox(
       height: 50,
@@ -19,7 +20,7 @@ Widget create_newmess_button(String butonName) {
           onPrimary: Colors.white, // foreground
         ),
         onPressed: () {
-          Get.to(Create_Mess());
+          Get.to(() => Create_Mess());
         },
         child: Text(
           butonName,

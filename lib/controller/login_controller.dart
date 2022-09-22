@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:messxp/provider/log_in_provider.dart';
+import 'package:messxp/ui/screens/dashboard.dart';
 import 'package:messxp/ui/screens/homepage.dart';
 
 class LoginController extends GetxController {
@@ -60,7 +61,7 @@ class LoginController extends GetxController {
     if (logInStatus == true) {
       isLoading.value = false;
       // Get.offAndToNamed(Routes.HOME);
-      Get.to(() => Homepage());
+      Get.to(() => DashBoard());
     } else {
       isLoading.value = false;
       Get.snackbar(

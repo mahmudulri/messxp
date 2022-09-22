@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:messxp/const/app_colors.dart';
+import 'package:messxp/controller/create_mess_controller.dart';
 
-Widget continue_button(String butonName) {
+Widget continue_button(String butonName, CreateMessController controller) {
+
   return Padding(
     padding: const EdgeInsets.symmetric(
       horizontal: 75,
@@ -9,14 +13,26 @@ Widget continue_button(String butonName) {
     child: SizedBox(
       height: 50,
       width: double.infinity,
-      child: ElevatedButton(
+      child:    ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10))),
           primary: AppColors.defalutColor, // background
           onPrimary: Colors.white, // foreground
         ),
-        onPressed: () {},
+        onPressed: () {
+          if(controller.address.value == ""){
+            Get.snackbar(
+              "Error",
+              "Provide valid address",
+              colorText: Colors.black,
+              backgroundColor: Colors.grey,
+              snackPosition: SnackPosition.BOTTOM,
+
+            );
+          }
+            controller.createNewMess();
+        },
         child: Text(
           butonName,
           style: TextStyle(
@@ -26,13 +42,14 @@ Widget continue_button(String butonName) {
             fontWeight: FontWeight.bold,
           ),
         ),
-      ),
+      )
     ),
   );
 }
 
-Widget addresstextfield(double screen_width, TextEditingController) {
-  return Container(
+Widget addresstextfield(double screen_width, TextEditingController editingController,CreateMessController controller) {
+
+  return Obx(() => Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.all(
         Radius.circular(12),
@@ -42,21 +59,28 @@ Widget addresstextfield(double screen_width, TextEditingController) {
       ),
     ),
     height: 50,
-    child: Row(
+    child:
+    Row(
       children: [
         SizedBox(
           width: screen_width * 0.020,
         ),
         Expanded(
           flex: 5,
-          child: TextField(
-            controller: TextEditingController,
+          child: TextFormField(
+            controller: editingController,
             style: TextStyle(
               color: Colors.white,
             ),
+            onSaved: (value){
+              controller.address.value = value.toString();
+            },
+            onChanged: (value){
+              controller.address.value = value.toString();
+            },
             decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: 'Address',
+                hintText: controller.address.value == "" ? 'Address' : controller.address.value,
                 hintStyle: TextStyle(
                   color: Colors.white,
                 )),
@@ -66,8 +90,8 @@ Widget addresstextfield(double screen_width, TextEditingController) {
           flex: 1,
           child: InkWell(
             onTap: () {
-              TextEditingController.clear();
-              print("Deleted");
+              editingController.clear();
+              controller.address.value = "";
             },
             child: Icon(
               Icons.close,
@@ -87,7 +111,9 @@ Widget addresstextfield(double screen_width, TextEditingController) {
             ),
             child: Center(
               child: InkWell(
-                onTap: () {},
+                onTap: () async {
+                  await controller.getLocation();
+                },
                 child: Icon(
                   Icons.location_pin,
                   size: 40,
@@ -99,11 +125,28 @@ Widget addresstextfield(double screen_width, TextEditingController) {
         ),
       ],
     ),
-  );
+  ));
 }
 
-Widget createmesstextfile(String fieldName) {
+Widget createmesstextfile(String fieldName,TextEditingController editingController,CreateMessController controller) {
+
+
   return TextFormField(
+    controller: editingController,
+    validator: (Value) {
+      return fieldName == 'Mess name'
+            ? controller.validateName(Value.toString()) :
+            fieldName == 'Owner name' ? controller.validateOwnerName(Value.toString())
+          : controller.validateOwnerPhone(Value.toString());
+    },
+    onSaved: (value) {
+      fieldName == 'Mess name'
+          ? controller.messName = value.toString()
+          : fieldName == 'Owner name'
+          ? controller.ownerName = value.toString()
+          : controller.ownerPhone = value.toString();
+    },
+    keyboardType: fieldName == 'Owner phone number' ? TextInputType.phone : TextInputType.text,
     decoration: InputDecoration(
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),
