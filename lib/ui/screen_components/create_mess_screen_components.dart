@@ -31,7 +31,9 @@ Widget continue_button(String butonName, CreateMessController controller) {
 
             );
           }
+          else {
             controller.createNewMess();
+          }
         },
         child: Text(
           butonName,
@@ -74,6 +76,7 @@ Widget addresstextfield(double screen_width, TextEditingController editingContro
             ),
             onSaved: (value){
               controller.address.value = value.toString();
+              print("ddddddddddeeeeebug"+value.toString());
             },
             onChanged: (value){
               controller.address.value = value.toString();

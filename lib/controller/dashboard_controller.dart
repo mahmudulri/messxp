@@ -19,7 +19,7 @@ class DashBoardController extends GetxController {
 
   GetStorage _getStorage = GetStorage('app_storage');
 
-  dynamic? messId = ''.obs;
+  var messId = ''.obs;
 
 
   @override

@@ -56,12 +56,14 @@ class CreateMessController extends GetxController {
     return null;
   }
 
-  String? validateAddress(String value) {
-    if (value.length < 1) {
-      return "Enter Address";
-    }
-    return null;
-  }
+  // String? validateAddress(String value) {
+  //   print("addddddddressssss4444444......."+address.value.toString());
+  //   print("addddddddressssss55555555......."+value.toString());
+  //   if (value.length < 1) {
+  //     return "Enter Address";
+  //   }
+  //   return null;
+  // }
   String? validateOwnerName(String value) {
     if (value.length < 1) {
       return "Enter Owner Name";
@@ -77,6 +79,11 @@ class CreateMessController extends GetxController {
   }
 
   Future<void> createNewMess() async {
+
+    print("addddddddressssss3333333......."+address.value.toString());
+
+    String value1 = "";
+    value1 = address.value;
     final isValid = messFromKey.currentState!.validate();
     if (!isValid) {
       return;
@@ -86,12 +93,13 @@ class CreateMessController extends GetxController {
 
     isLoading.value = true;
 
-    print("addddddddressssss......."+address.value.toString());
+
+    print("addddddddressssss7777777......."+value1.toString());
 
 
 
 
-    var status = await CreateMessProvider().createMess(messName, address.value, ownerName, ownerPhone);
+    var status = await CreateMessProvider().createMess(messName,value1, ownerName, ownerPhone);
     print("login status ......." +status.toString());
 
     if ( status== true) {
@@ -135,6 +143,8 @@ class CreateMessController extends GetxController {
           getAddressFromLatLang(position);
           streamSubscription?.pause();
         });
+
+
   }
 
   Future<void> getAddressFromLatLang(Position position) async {
