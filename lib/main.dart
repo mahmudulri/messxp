@@ -4,6 +4,8 @@ import 'package:get_storage/get_storage.dart';
 
 import 'package:messxp/ui/route/route.dart';
 import 'package:messxp/ui/screen_components/sign_up_screen_components.dart';
+import 'package:messxp/ui/screens/create_mess_screen.dart';
+import 'package:messxp/ui/screens/dashboard.dart';
 import 'package:messxp/ui/screens/login_resetpass.dart';
 import 'package:messxp/ui/screens/login_screen.dart';
 import 'package:messxp/ui/screens/otp_for_pass.dart';
@@ -31,6 +33,6 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         getPages: getPages,
-        home: LogIn_Screen());
+        home: Create_Mess());
   }
 }
