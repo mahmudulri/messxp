@@ -11,30 +11,36 @@ import 'package:messxp/ui/screens/homepage.dart';
 
 class DashBoardController extends GetxController {
 
-  GlobalKey<FormState> dashboardFromKey = GlobalKey<FormState>();
+   GlobalKey<FormState> dashboardFromKey = GlobalKey<FormState>();
 
   var isLoading = false.obs;
 
-  late TextEditingController messIdController;
+  // late TextEditingController messIdController;
 
   GetStorage _getStorage = GetStorage('app_storage');
 
-  var messId = ''.obs;
+  var messId = 'mess Id'.obs;
 
 
   @override
   Future<void> onInit() async {
     // TODO: implement onInit
     super.onInit();
-    messIdController = TextEditingController(text: messId.toString());
-    messId.value = await _getStorage.read('mess_id');
+    // messIdController = TextEditingController(text: messId.toString());
+    var mess_id = await _getStorage.read('mess_id');
+    if(mess_id != null){
+      messId = mess_id;
+    }
+    else {
+      messId.value = 'mess Id';
+    }
     // messIdController = TextEditingController(text: messId.toString());
   }
 
   void onClose() {
     // TODO: implement onClose
     super.onClose();
-    messIdController.dispose();
+    // messIdController.dispose();
   }
 
   String? validateMessId(String value) {

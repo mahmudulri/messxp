@@ -82,8 +82,8 @@ class CreateMessController extends GetxController {
 
     print("addddddddressssss3333333......."+address.value.toString());
 
-    String value1 = "";
-    value1 = address.value;
+    String userAddress = "";
+    userAddress = address.value;
     final isValid = messFromKey.currentState!.validate();
     if (!isValid) {
       return;
@@ -94,12 +94,12 @@ class CreateMessController extends GetxController {
     isLoading.value = true;
 
 
-    print("addddddddressssss7777777......."+value1.toString());
+    print("addddddddressssss7777777......."+userAddress.toString());
 
 
 
 
-    var status = await CreateMessProvider().createMess(messName,value1, ownerName, ownerPhone);
+    var status = await CreateMessProvider().createMess(messName,userAddress, ownerName, ownerPhone);
     print("login status ......." +status.toString());
 
     if ( status== true) {

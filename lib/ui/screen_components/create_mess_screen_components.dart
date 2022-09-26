@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:messxp/const/app_colors.dart';
 import 'package:messxp/controller/create_mess_controller.dart';
+import 'package:messxp/ui/screens/dashboard.dart';
 
 Widget continue_button(String butonName, CreateMessController controller) {
+
+  GetStorage _getStorage = GetStorage('app_storage');
 
   return Padding(
     padding: const EdgeInsets.symmetric(
@@ -20,7 +24,7 @@ Widget continue_button(String butonName, CreateMessController controller) {
           primary: AppColors.defalutColor, // background
           onPrimary: Colors.white, // foreground
         ),
-        onPressed: () {
+        onPressed: () async {
           if(controller.address.value == ""){
             Get.snackbar(
               "Error",
@@ -32,7 +36,16 @@ Widget continue_button(String butonName, CreateMessController controller) {
             );
           }
           else {
-            controller.createNewMess();
+
+            print("mess created ......");
+
+            await _getStorage.write('mess_id', 34321);
+
+            Get.back();
+
+            // Get.to(() => DashBoard());
+
+            // controller.createNewMess();
           }
         },
         child: Text(

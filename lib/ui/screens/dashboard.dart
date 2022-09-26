@@ -109,7 +109,8 @@ class DashBoard extends StatelessWidget {
                                 left: screen_height * 0.010
                               ),
                               child: TextFormField(
-                                controller: controller.messIdController,
+                                initialValue: controller.messId.value,
+                                // controller: controller.messIdController,
                                 style: TextStyle(
                                   color: Colors.white,
                                 ),
