@@ -110,7 +110,7 @@ class DashBoard extends StatelessWidget {
                               ),
                               child: TextFormField(
                                 initialValue: controller.messId.value,
-                                // controller: controller.messIdController,
+
                                 style: TextStyle(
                                   color: Colors.white,
                                 ),
@@ -139,7 +139,7 @@ class DashBoard extends StatelessWidget {
                           child: Center(
                               child: GestureDetector(
                                 onTap: (){
-                                  if(controller.messId == ""){
+                                  if(controller.messId == "mess Id"){
                                     Get.snackbar(
                                       "Error",
                                       "Provide valid Mess Id",

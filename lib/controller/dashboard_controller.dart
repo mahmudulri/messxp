@@ -26,10 +26,10 @@ class DashBoardController extends GetxController {
   Future<void> onInit() async {
     // TODO: implement onInit
     super.onInit();
-    // messIdController = TextEditingController(text: messId.toString());
-    var mess_id = await _getStorage.read('mess_id');
+
+    String? mess_id = await _getStorage.read('mess_id');
     if(mess_id != null){
-      messId = mess_id;
+      messId.value = mess_id;
     }
     else {
       messId.value = 'mess Id';

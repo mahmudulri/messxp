@@ -36,16 +36,7 @@ Widget continue_button(String butonName, CreateMessController controller) {
             );
           }
           else {
-
-            print("mess created ......");
-
-            await _getStorage.write('mess_id', 34321);
-
-            Get.back();
-
-            // Get.to(() => DashBoard());
-
-            // controller.createNewMess();
+            controller.createNewMess();
           }
         },
         child: Text(

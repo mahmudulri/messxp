@@ -17,6 +17,8 @@ class CreateMessController extends GetxController {
 
   var isLoading = false.obs;
 
+  var isProcessing = false.obs;
+
   late TextEditingController messController, addressController,ownerNameController, ownerPasswordController;
 
   var messName = '';
@@ -105,7 +107,7 @@ class CreateMessController extends GetxController {
     if ( status== true) {
       isLoading.value = false;
       // Get.offAndToNamed(Routes.HOME);
-      Get.to(() => DashBoard());
+     Get.back();
     } else {
       isLoading.value = false;
       Get.snackbar(
@@ -140,8 +142,10 @@ class CreateMessController extends GetxController {
 
     streamSubscription =
         Geolocator.getPositionStream().listen((Position position) {
+          isProcessing.value = true;
           getAddressFromLatLang(position);
-          streamSubscription?.pause();
+          isProcessing.value = false;
+          // streamSubscription?.pause();
         });
 
 
