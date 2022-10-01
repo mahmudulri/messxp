@@ -1,5 +1,6 @@
 import 'package:get/get_connect/connect.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
 
 class ResetLogin extends GetConnect {
   GetStorage _getStorage = GetStorage('app_storage');

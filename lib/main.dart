@@ -6,10 +6,14 @@ import 'package:messxp/ui/route/route.dart';
 import 'package:messxp/ui/screen_components/sign_up_screen_components.dart';
 import 'package:messxp/ui/screens/create_mess_screen.dart';
 import 'package:messxp/ui/screens/dashboard.dart';
+import 'package:messxp/ui/screens/draft.dart';
+import 'package:messxp/ui/screens/mess_config_screen.dart';
+import 'package:messxp/ui/screens/mess_create_switch.dart';
 import 'package:messxp/ui/screens/login_resetpass.dart';
 import 'package:messxp/ui/screens/login_screen.dart';
 import 'package:messxp/ui/screens/otp_for_pass.dart';
 import 'package:messxp/ui/screens/otp_screen.dart';
+
 import 'package:messxp/ui/screens/password_reset.dart';
 import 'package:messxp/ui/screens/set_new_password.dart';
 import 'package:messxp/ui/screens/signup_screen.dart';
@@ -33,6 +37,6 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         getPages: getPages,
-        home: Create_Mess());
+        home: MessConfigScreen());
   }
 }
