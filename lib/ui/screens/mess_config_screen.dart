@@ -154,7 +154,6 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
                           color: Colors.black45,
                         ),
                       ),
@@ -195,7 +194,6 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
                           color: Colors.black45,
                         ),
                       ),
@@ -204,7 +202,6 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
                           color: Colors.black45,
                         ),
                       ),
@@ -213,7 +210,6 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
                           color: Colors.black45,
                         ),
                       )
@@ -252,7 +248,6 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
                           color: Colors.black45,
                         ),
                       ),
@@ -261,7 +256,6 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
                           color: Colors.black45,
                         ),
                       ),
@@ -304,7 +298,6 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
                           color: Colors.black45,
                         ),
                       ),
@@ -313,7 +306,6 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
                           color: Colors.black45,
                         ),
                       ),
@@ -322,7 +314,6 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
                           color: Colors.black45,
                         ),
                       ),
@@ -340,7 +331,6 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
                           color: Colors.black45,
                         ),
                       ),
@@ -356,11 +346,36 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
             Divider(
               thickness: 2,
             ),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 35,
+              ),
+              child: Text(
+                "Room & Seat Configuration",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontFamily: "Ubuntu",
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black45,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
 
-            Text(
-              "No of Flat: " + flat.toString(),
-              style: const TextStyle(
-                fontSize: 22.0,
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 35,
+              ),
+              child: Text(
+                "No of Flat: " + flat.toString(),
+                style: const TextStyle(
+                  fontSize: 22.0,
+                ),
               ),
             ),
 
@@ -382,10 +397,15 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
             SizedBox(
               height: 10,
             ),
-            Text(
-              "No of Flat: " + room.toString(),
-              style: const TextStyle(
-                fontSize: 22.0,
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 35,
+              ),
+              child: Text(
+                "No of Flat: " + room.toString(),
+                style: const TextStyle(
+                  fontSize: 22.0,
+                ),
               ),
             ),
 
