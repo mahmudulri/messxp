@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:messxp/const/app_colors.dart';
+import 'package:messxp/ui/screen_components/mess_config_components.dart';
 import 'package:messxp/ui/widgets/dtext.dart';
 
 class MessConfigScreen extends StatefulWidget {
@@ -61,41 +63,9 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
             SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 20,
-                right: 20,
-              ),
-              child: Container(
-                height: 150,
-                width: screen_width,
-                decoration: BoxDecoration(),
-                child: ListView.separated(
-                  physics: BouncingScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Center(
-                      child: Container(
-                        height: 120,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/image-1.png"),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) =>
-                      SizedBox(
-                    width: 10,
-                  ),
-                ),
-              ),
-            ),
+
+            // Image gallery section.........................
+            gallery_section(screen_width),
             SizedBox(
               height: 10,
             ),
@@ -128,227 +98,30 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
             ),
 
             // House / Mess name..................................../house mess name
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 35,
-                right: 35,
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "House/Mess Name",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Ubuntu",
-                          color: Colors.black45,
-                        ),
-                      ),
-                      Text(
-                        "Address",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          color: Colors.black45,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Icon(
-                    Icons.edit,
-                    color: Colors.black,
-                  ),
-                ],
-              ),
-            ),
+            mess_information(),
             SizedBox(
               height: 30,
             ),
             // Owner Info..................................../ Owner Info
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 35,
-                right: 35,
-              ),
-              child: Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Owner info : ",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      Text(
-                        "Owner name",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          color: Colors.black45,
-                        ),
-                      ),
-                      Text(
-                        "Owner address",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          color: Colors.black45,
-                        ),
-                      ),
-                      Text(
-                        "Owner Phone number",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          color: Colors.black45,
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
+            owner_information(),
             SizedBox(
               height: 30,
             ),
             // House Emergency ..................................../ House Emergency
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 35,
-                right: 35,
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "House Emergency",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      Text(
-                        "Caretaker name",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          color: Colors.black45,
-                        ),
-                      ),
-                      Text(
-                        "Caretaker phone number",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          color: Colors.black45,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Icon(
-                    Icons.edit,
-                    color: Colors.black,
-                  ),
-                ],
-              ),
-            ),
+            house_emergency(),
             SizedBox(
               height: 30,
             ),
             //  Emergency Utility ..................................../  Emergency Utility
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 35,
-                right: 35,
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Emergency & Utility",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      Text(
-                        "ISP number:",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          color: Colors.black45,
-                        ),
-                      ),
-                      Text(
-                        "Paper",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          color: Colors.black45,
-                        ),
-                      ),
-                      Text(
-                        "Water supply",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          color: Colors.black45,
-                        ),
-                      ),
-                      Text(
-                        "Fire service",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black45,
-                        ),
-                      ),
-                      Text(
-                        "Pest control",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Ubuntu",
-                          color: Colors.black45,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Icon(
-                    Icons.edit,
-                    color: Colors.black,
-                  ),
-                ],
-              ),
-            ),
+            emergency_utility(),
             Divider(
               thickness: 2,
             ),
             SizedBox(
               height: 10,
             ),
+
+            //   Room & Seat Configuration................Room & Seat Configuration...........//
             Padding(
               padding: const EdgeInsets.only(
                 left: 35,
@@ -366,7 +139,7 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
             SizedBox(
               height: 10,
             ),
-
+            // Flat no...................Flat  no .............Flat no...............//
             Padding(
               padding: const EdgeInsets.only(
                 left: 35,
@@ -397,12 +170,14 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
             SizedBox(
               height: 10,
             ),
+
+            // Room no.................Room no................Room no.......//
             Padding(
               padding: const EdgeInsets.only(
                 left: 35,
               ),
               child: Text(
-                "No of Flat: " + room.toString(),
+                "No of Rooms: " + room.toString(),
                 style: const TextStyle(
                   fontSize: 22.0,
                 ),
@@ -423,6 +198,10 @@ class _MessConfigScreenState extends State<MessConfigScreen> {
               },
               min: 1,
               max: 5,
+            ),
+            continue_config_button(),
+            SizedBox(
+              height: 35,
             ),
           ],
         ),
