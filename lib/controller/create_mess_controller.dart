@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:messxp/controller/dashboard_controller.dart';
 import 'package:messxp/provider/create_mess_provider.dart';
 
@@ -18,6 +19,8 @@ class CreateMessController extends GetxController {
 
   final controller = Get.put(DashBoardController());
 
+  GetStorage _getStorage = GetStorage('app_storage');
+
   var isLoading = false.obs;
 
   var isProcessing = false.obs;
@@ -29,7 +32,7 @@ class CreateMessController extends GetxController {
   var ownerName = '';
   var ownerPhone = '';
 
-  late StreamSubscription<Position>? streamSubscription;
+  // late StreamSubscription<Position>? streamSubscription;
 
 
 
@@ -51,7 +54,7 @@ class CreateMessController extends GetxController {
     addressController.dispose();
     ownerNameController.dispose();
     ownerPasswordController.dispose();
-    streamSubscription?.cancel();
+    // streamSubscription?.cancel();
   }
 
   String? validateName(String value) {
@@ -110,10 +113,22 @@ class CreateMessController extends GetxController {
     if ( status== true) {
       isLoading.value = false;
       // Get.offAndToNamed(Routes.HOME);
-      controller.refresh();
+      // controller.refresh();
       await controller.changeMessId();
 
-     Get.back();
+      var val = _getStorage.read('mess_id').toString();
+
+      print("geeeeeeeeeet"+val.toString());
+
+      var data = {
+        "value": val
+      };
+
+      // Get.offAll(DashBoard());
+
+     Get.back(
+       // result: data
+     );
     } else {
       isLoading.value = false;
       Get.snackbar(
@@ -148,13 +163,13 @@ class CreateMessController extends GetxController {
 
     isProcessing.value = true;
 
-    streamSubscription =
-        Geolocator.getPositionStream().listen((Position position) {
-          isProcessing.value = true;
-          getAddressFromLatLang(position);
-          isProcessing.value = false;
-          // streamSubscription?.pause();
-        });
+    // streamSubscription =
+    //     Geolocator.getPositionStream().listen((Position position) {
+    //       isProcessing.value = true;
+    //       getAddressFromLatLang(position);
+    //       isProcessing.value = false;
+    //       // streamSubscription?.pause();
+    //     });
 
 
   }

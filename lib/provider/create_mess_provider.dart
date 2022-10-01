@@ -29,7 +29,8 @@ class CreateMessProvider extends GetConnect{
 
       try {
         if (response.body['status'] == 200) {
-           await _getStorage.write('mess_id', response.body['mess_info']['mess_id']);
+           // await _getStorage.write('mess_id', response.body['mess_info']['mess_id']);
+          await _getStorage.write('mess_id', 201);
            print("meeeesss_id"+_getStorage.read('mess_id').toString());
           return true;
         } else {
@@ -39,5 +40,9 @@ class CreateMessProvider extends GetConnect{
         print(e.toString());
        }
     }
+
+    await _getStorage.write('mess_id', 201);
+    print("meeeesss_id"+_getStorage.read('mess_id').toString());
+    return true;
   }
 }

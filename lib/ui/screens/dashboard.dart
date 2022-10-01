@@ -7,11 +7,14 @@ import 'package:messxp/const/app_colors.dart';
 import 'package:messxp/controller/dashboard_controller.dart';
 import 'package:messxp/ui/screen_components/dashboard_components.dart';
 
-class DashBoard extends StatelessWidget {
+class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
 
+  @override
+  State<DashBoard> createState() => _DashBoardState();
+}
 
-
+class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     var screen_height = MediaQuery.of(context).size.height;
@@ -23,6 +26,14 @@ class DashBoard extends StatelessWidget {
 
     // controller.changeMessId();
 
+
+    // controller.dashboardFromKey.currentContext;
+
+    update(){
+      setState(() {
+
+      });
+    }
 
     return SafeArea(
       child: Scaffold(
@@ -66,7 +77,7 @@ class DashBoard extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "Mess ID",
+                      "Mess ID "+controller.messId.toString(),
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: "Ubuntu",
@@ -116,7 +127,6 @@ class DashBoard extends StatelessWidget {
                               child:
                               Obx(()=>TextFormField(
                                 initialValue: controller.messId.value,
-
                                 style: TextStyle(
                                   color: Colors.white,
                                 ),
@@ -189,7 +199,7 @@ class DashBoard extends StatelessWidget {
                 SizedBox(
                   height: screen_height * 0.030,
                 ),
-                create_newmess_button("+ Create New mess"),
+                create_newmess_button("+ Create New mess", update()),
                 SizedBox(
                   height: screen_height * 0.030,
                 ),

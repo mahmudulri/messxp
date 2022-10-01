@@ -19,25 +19,25 @@ class DashBoardController extends GetxController {
 
   GetStorage _getStorage = GetStorage('app_storage');
 
-  var messId = ''.obs;
+  var messId = 'enter val'.obs;
 
-   dynamic argumentData = Get.arguments;
+   String argumentData = Get.parameters['value'].toString();
 
 
 
    @override
-  Future<void> onInit() async {
+   onInit()  {
     // TODO: implement onInit
     super.onInit();
-    await changeMessId();
+     changeMessId();
     // messId.value = argumentData;
     // messIdController = TextEditingController(text: messId.toString());
   }
 
-  Future<void> changeMessId() async {
-    String? mess_id = await _getStorage.read('mess_id');
+   changeMessId()  {
+    int? mess_id =  _getStorage.read('mess_id');
     print("from dashBoard"+mess_id.toString());
-    if(mess_id != null){
+    if(mess_id.toString() != "null"){
       print("from dashBoard1111111"+mess_id.toString());
       messId.value = mess_id.toString();
       print("from dashBoard22222222"+messId.toString());
@@ -45,6 +45,15 @@ class DashBoardController extends GetxController {
     else {
       messId.value = 'Enter Mess Id';
     }
+
+    // if(argumentData != 'null'){
+    //   print("from dashBoard1111111"+argumentData.toString());
+    //   messId.value = argumentData.toString();
+    //   print("from dashBoard22222222"+messId.toString());
+    // }
+    // else {
+    //   messId.value = 'Enter Mess Id';
+    // }
   }
 
   void onClose() {
