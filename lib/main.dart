@@ -8,6 +8,7 @@ import 'package:messxp/ui/screens/create_mess_screen.dart';
 import 'package:messxp/ui/screens/dashboard.dart';
 import 'package:messxp/ui/screens/login_resetpass.dart';
 import 'package:messxp/ui/screens/login_screen.dart';
+import 'package:messxp/ui/screens/mess_expense.dart';
 import 'package:messxp/ui/screens/otp_for_pass.dart';
 import 'package:messxp/ui/screens/otp_screen.dart';
 import 'package:messxp/ui/screens/password_reset.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',

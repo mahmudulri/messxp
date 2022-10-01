@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:messxp/controller/dashboard_controller.dart';
 import 'package:messxp/provider/create_mess_provider.dart';
 
 import '../ui/screens/dashboard.dart';
@@ -14,6 +15,8 @@ class CreateMessController extends GetxController {
 
 
   GlobalKey<FormState> messFromKey = GlobalKey<FormState>();
+
+  final controller = Get.put(DashBoardController());
 
   var isLoading = false.obs;
 
@@ -107,6 +110,9 @@ class CreateMessController extends GetxController {
     if ( status== true) {
       isLoading.value = false;
       // Get.offAndToNamed(Routes.HOME);
+      controller.refresh();
+      await controller.changeMessId();
+
      Get.back();
     } else {
       isLoading.value = false;
@@ -139,6 +145,8 @@ class CreateMessController extends GetxController {
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
+
+    isProcessing.value = true;
 
     streamSubscription =
         Geolocator.getPositionStream().listen((Position position) {

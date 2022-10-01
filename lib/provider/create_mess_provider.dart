@@ -2,10 +2,12 @@
 
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:messxp/controller/dashboard_controller.dart';
 
 class CreateMessProvider extends GetConnect{
 
   GetStorage _getStorage = GetStorage('app_storage');
+
 
   Future<dynamic> createMess(String mess_name, String address,
       String owner_name, String owner_phone) async {
@@ -28,6 +30,7 @@ class CreateMessProvider extends GetConnect{
       try {
         if (response.body['status'] == 200) {
            await _getStorage.write('mess_id', response.body['mess_info']['mess_id']);
+           print("meeeesss_id"+_getStorage.read('mess_id').toString());
           return true;
         } else {
           return false;

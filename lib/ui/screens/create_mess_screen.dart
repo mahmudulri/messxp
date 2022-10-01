@@ -78,7 +78,11 @@ class _Create_MessState extends State<Create_Mess> {
                             top: screen_height * 0.019,
                             left: screen_height * 0.019
                         ),
-                        child: Text(
+                        child: controller.isProcessing.value == true ? Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.blueGrey,
+                          ),
+                        ) : Text(
                             controller.address.value.toString()
                         ),
                       ),

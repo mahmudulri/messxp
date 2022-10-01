@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
@@ -16,7 +17,11 @@ class DashBoard extends StatelessWidget {
     var screen_height = MediaQuery.of(context).size.height;
     var screen_width = MediaQuery.of(context).size.width;
 
+
+
     final DashBoardController controller = Get.put(DashBoardController());
+
+    // controller.changeMessId();
 
 
     return SafeArea(
@@ -108,7 +113,8 @@ class DashBoard extends StatelessWidget {
                               padding: EdgeInsets.only(
                                 left: screen_height * 0.010
                               ),
-                              child: TextFormField(
+                              child:
+                              Obx(()=>TextFormField(
                                 initialValue: controller.messId.value,
 
                                 style: TextStyle(
@@ -123,7 +129,7 @@ class DashBoard extends StatelessWidget {
                                     hintStyle: TextStyle(
                                       color: Colors.white,
                                     )),
-                              ),
+                              )),
                             ),
                           )),
                       Expanded(

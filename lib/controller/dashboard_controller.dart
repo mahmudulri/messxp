@@ -19,22 +19,32 @@ class DashBoardController extends GetxController {
 
   GetStorage _getStorage = GetStorage('app_storage');
 
-  var messId = 'mess Id'.obs;
+  var messId = ''.obs;
+
+   dynamic argumentData = Get.arguments;
 
 
-  @override
+
+   @override
   Future<void> onInit() async {
     // TODO: implement onInit
     super.onInit();
+    await changeMessId();
+    // messId.value = argumentData;
+    // messIdController = TextEditingController(text: messId.toString());
+  }
 
+  Future<void> changeMessId() async {
     String? mess_id = await _getStorage.read('mess_id');
+    print("from dashBoard"+mess_id.toString());
     if(mess_id != null){
-      messId.value = mess_id;
+      print("from dashBoard1111111"+mess_id.toString());
+      messId.value = mess_id.toString();
+      print("from dashBoard22222222"+messId.toString());
     }
     else {
-      messId.value = 'mess Id';
+      messId.value = 'Enter Mess Id';
     }
-    // messIdController = TextEditingController(text: messId.toString());
   }
 
   void onClose() {
