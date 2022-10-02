@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:messxp/const/app_colors.dart';
 import 'package:messxp/controller/dashboard_controller.dart';
 import 'package:messxp/ui/screen_components/dashboard_components.dart';
+import 'package:messxp/ui/screens/qrscan_screen.dart';
 
 import '../../const/app_string.dart';
 
@@ -70,7 +71,7 @@ class _DashBoardState extends State<DashBoard> {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "Mess ID "+controller.messId.toString(),
+                      "Mess ID ",
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: "Ubuntu",
@@ -101,10 +102,15 @@ class _DashBoardState extends State<DashBoard> {
                           padding: EdgeInsets.only(
                             left: screen_height * 0.005
                           ),
-                          child: Icon(
-                            Icons.qr_code_scanner,
-                            size: 30,
-                            color: Colors.white,
+                          child: GestureDetector(
+                            onTap: (){
+                              Get.to(() => QRScanScreeen());
+                            },
+                            child: Icon(
+                              Icons.qr_code_scanner,
+                              size: 30,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),

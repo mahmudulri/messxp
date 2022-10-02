@@ -7,11 +7,16 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:messxp/provider/dashboard_provider.dart';
 import 'package:messxp/ui/screens/homepage.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 
 class DashBoardController extends GetxController {
 
    GlobalKey<FormState> dashboardFromKey = GlobalKey<FormState>();
+
+   final GlobalKey qrKey = GlobalKey();
+   Barcode? result;
+   QRViewController? controller;
 
   var isLoading = false.obs;
 
@@ -47,7 +52,8 @@ class DashBoardController extends GetxController {
   void onClose() {
     // TODO: implement onClose
     super.onClose();
-    // messIdController.dispose();
+     messIdController.dispose();
+    controller?.dispose();
   }
 
   String? validateMessId(String value) {
@@ -86,5 +92,22 @@ class DashBoardController extends GetxController {
       );
     }
   }
+
+   Future<void> onQRViewCreated(QRViewController controller) async {
+
+     this.controller = controller;
+     controller.resumeCamera();
+
+     controller.scannedDataStream.listen((scanData) async {
+       controller.dispose();
+       this.result = scanData;
+       if(result != null){
+         messId.value == result.toString();
+         await controller.stopCamera();
+         controller.getCameraInfo().whenComplete(() => controller.dispose());
+         Get.back();
+       }
+     });
+   }
 
 }
