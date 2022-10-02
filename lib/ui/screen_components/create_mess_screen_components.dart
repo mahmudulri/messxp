@@ -6,9 +6,13 @@ import 'package:messxp/const/app_colors.dart';
 import 'package:messxp/controller/create_mess_controller.dart';
 import 'package:messxp/ui/screens/dashboard.dart';
 
+bool _value = false;
+
 Widget continue_button(String butonName, CreateMessController controller) {
 
   GetStorage _getStorage = GetStorage('app_storage');
+
+
 
   return Padding(
     padding: const EdgeInsets.symmetric(
@@ -36,7 +40,23 @@ Widget continue_button(String butonName, CreateMessController controller) {
             );
           }
           else {
-            controller.createNewMess();
+            if(_value == false){
+              Get.snackbar(
+                "Error",
+                "Please checked and ensure !!!",
+                colorText: Colors.black,
+                backgroundColor: Colors.grey,
+                snackPosition: SnackPosition.BOTTOM,
+
+              );
+            }
+
+            else {
+
+              controller.createNewMess();
+            }
+
+
           }
         },
         child: Text(
@@ -173,4 +193,59 @@ Widget createmesstextfile(String fieldName,TextEditingController editingControll
       ),
     ),
   );
+}
+
+
+class Mycheckbox extends StatefulWidget {
+  @override
+  State<Mycheckbox> createState() => _MycheckboxState();
+}
+class _MycheckboxState extends State<Mycheckbox> {
+  @override
+  Widget build(BuildContext context) {
+    var screen_width = MediaQuery.of(context).size.width;
+    return Row(
+      children: [
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                color: AppColors.defalutColor,
+              ),
+              height: 35,
+              width: 35,
+            ),
+            InkWell(
+              onTap: () {
+                setState(() {
+                  _value = !_value;
+                });
+                print(_value);
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  // color: _value ? Colors.purple : Colors.white,
+                  color: _value ? Colors.black : AppColors.defalutColor,
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                ),
+                height: 20,
+                width: 20,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          width: screen_width * .020,
+        ),
+        Text(
+          "I've checked and ensured",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        )
+      ],
+    );
+  }
 }

@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:messxp/const/app_colors.dart';
 import 'package:messxp/ui/screen_components/create_mess_screen_components.dart';
 
+import '../../const/app_string.dart';
 import '../../controller/create_mess_controller.dart';
 
 class Create_Mess extends StatefulWidget {
@@ -96,23 +97,73 @@ class _Create_MessState extends State<Create_Mess> {
                     ),
                     createmesstextfile("Owner phone number",controller.ownerPasswordController,controller),
                     SizedBox(
-                      height: screen_height * 0.010,
+                      height: screen_height * 0.015,
                     ),
-                    Checkbox(
-                        value: _value,
-                        onChanged: (value) {
-                          setState(() {
-                            _value = value!;
-                            print(_value);
-                          });
-                        }),
+                    SizedBox(
+                      height: screen_height * 0.015,
+                    ),
+                    Mycheckbox(),
                     continue_button("Continue",controller),
                     SizedBox(height: screen_height * 0.010,),
                     controller.isLoading.value == true ? Center(
                       child: CircularProgressIndicator(
                         color: Colors.blueGrey,
                       ),
-                    ) : Container()
+                    ) : Container(),
+                    SizedBox(
+                      height: screen_height * 0.020,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        // Get.to(Draftpage());
+                      },
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: screen_height * 0.055,
+                          width: screen_width * 0.20,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1,
+                              color: AppColors.defalutColor,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Skip".toUpperCase(),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: screen_height * 0.010,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "waring".toUpperCase(),
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: screen_height * 0.010,
+                    ),
+                    Text(
+                      warning_text,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    )
                   ],
                 ),
               ),)
