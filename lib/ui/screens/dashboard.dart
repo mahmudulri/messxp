@@ -7,6 +7,8 @@ import 'package:messxp/const/app_colors.dart';
 import 'package:messxp/controller/dashboard_controller.dart';
 import 'package:messxp/ui/screen_components/dashboard_components.dart';
 
+import '../../const/app_string.dart';
+
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
 
@@ -24,16 +26,7 @@ class _DashBoardState extends State<DashBoard> {
 
     final DashBoardController controller = Get.put(DashBoardController());
 
-    // controller.changeMessId();
 
-
-    // controller.dashboardFromKey.currentContext;
-
-    update(){
-      setState(() {
-
-      });
-    }
 
     return SafeArea(
       child: Scaffold(
@@ -125,8 +118,8 @@ class _DashBoardState extends State<DashBoard> {
                                 left: screen_height * 0.010
                               ),
                               child:
-                              Obx(()=>TextFormField(
-                                initialValue: controller.messId.value,
+                                  TextFormField(
+                                controller: controller.messIdController,
                                 style: TextStyle(
                                   color: Colors.white,
                                 ),
@@ -139,7 +132,7 @@ class _DashBoardState extends State<DashBoard> {
                                     hintStyle: TextStyle(
                                       color: Colors.white,
                                     )),
-                              )),
+                              ),
                             ),
                           )),
                       Expanded(
@@ -199,7 +192,7 @@ class _DashBoardState extends State<DashBoard> {
                 SizedBox(
                   height: screen_height * 0.030,
                 ),
-                create_newmess_button("+ Create New mess", update()),
+                create_newmess_button("+ Create New mess",),
                 SizedBox(
                   height: screen_height * 0.030,
                 ),
@@ -207,7 +200,67 @@ class _DashBoardState extends State<DashBoard> {
                   child: CircularProgressIndicator(
                     color: Colors.blueGrey,
                   ),
-                ) : Container()
+                ) : Container(),
+                SizedBox(
+                  height: screen_height * 0.020,
+                ),
+                InkWell(
+                  onTap: () {
+                    // Get.to(Draftpage());
+                  },
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      height: screen_height * 0.055,
+                      width: screen_width * 0.20,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 1,
+                          color: AppColors.defalutColor,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Skip".toUpperCase(),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: screen_height * 0.010,
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "waring".toUpperCase(),
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: screen_height * 0.010,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: screen_height * 0.010,
+                    right: screen_height * 0.010
+                  ),
+                  child: Text(
+                    warning_text,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                )
               ],
             ),
           )),

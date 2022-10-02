@@ -19,8 +19,6 @@ class CreateMessController extends GetxController {
 
   final controller = Get.put(DashBoardController());
 
-  GetStorage _getStorage = GetStorage('app_storage');
-
   var isLoading = false.obs;
 
   var isProcessing = false.obs;
@@ -112,22 +110,12 @@ class CreateMessController extends GetxController {
 
     if ( status== true) {
       isLoading.value = false;
-      // Get.offAndToNamed(Routes.HOME);
-      // controller.refresh();
       await controller.changeMessId();
 
-      var val = _getStorage.read('mess_id').toString();
-
-      print("geeeeeeeeeet"+val.toString());
-
-      var data = {
-        "value": val
-      };
 
       // Get.offAll(DashBoard());
 
      Get.back(
-       // result: data
      );
     } else {
       isLoading.value = false;

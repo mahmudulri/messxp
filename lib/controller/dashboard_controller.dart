@@ -15,14 +15,11 @@ class DashBoardController extends GetxController {
 
   var isLoading = false.obs;
 
-  // late TextEditingController messIdController;
+   TextEditingController messIdController = TextEditingController();
 
   GetStorage _getStorage = GetStorage('app_storage');
 
-  var messId = 'enter val'.obs;
-
-   String argumentData = Get.parameters['value'].toString();
-
+  var messId = ''.obs;
 
 
    @override
@@ -30,30 +27,21 @@ class DashBoardController extends GetxController {
     // TODO: implement onInit
     super.onInit();
      changeMessId();
-    // messId.value = argumentData;
-    // messIdController = TextEditingController(text: messId.toString());
+
   }
 
    changeMessId()  {
-    int? mess_id =  _getStorage.read('mess_id');
+    String? mess_id =  _getStorage.read('mess_id');
     print("from dashBoard"+mess_id.toString());
-    if(mess_id.toString() != "null"){
+    if(mess_id.toString() != 'null'){
       print("from dashBoard1111111"+mess_id.toString());
-      messId.value = mess_id.toString();
+      messIdController.text = mess_id.toString();
       print("from dashBoard22222222"+messId.toString());
     }
     else {
-      messId.value = 'Enter Mess Id';
+      messIdController.text = 'Enter Mess Id';
     }
 
-    // if(argumentData != 'null'){
-    //   print("from dashBoard1111111"+argumentData.toString());
-    //   messId.value = argumentData.toString();
-    //   print("from dashBoard22222222"+messId.toString());
-    // }
-    // else {
-    //   messId.value = 'Enter Mess Id';
-    // }
   }
 
   void onClose() {

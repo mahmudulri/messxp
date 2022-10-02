@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:messxp/const/app_colors.dart';
 import 'package:messxp/ui/screens/create_mess_screen.dart';
 
-Widget create_newmess_button(String butonName, update) {
+Widget create_newmess_button(String butonName) {
   return Padding(
     padding: EdgeInsets.only(
       left: 35,
@@ -19,12 +19,8 @@ Widget create_newmess_button(String butonName, update) {
           primary: AppColors.defalutColor, // background
           onPrimary: Colors.white, // foreground
         ),
-        onPressed: ()  async {
-           var r =  await Get.to(Create_Mess());
-
-           if(r != null){
-             update;
-           }
+        onPressed: ()   {
+          Get.to(() => Create_Mess());
         },
         child: Text(
           butonName,
